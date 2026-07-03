@@ -1,4 +1,4 @@
-import streamlit as st
+import streamlit st
 import pandas as pd
 import pickle
 
@@ -13,28 +13,22 @@ def load_model():
 
 models = load_model()
 
-# --- 1. TẠO THANH BÊN (SIDEBAR) CHUYÊN NGHIỆP ---
+# --- 1. TẠO THANH BÊN (SIDEBAR) ĐƠN GIẢN ---
 with st.sidebar:
-    st.image("https://cdn-icons-png.flaticon.com/512/2922/2922037.png", width=100) # Thêm 1 icon lá cây cho đẹp
     st.header("📌 Thông tin dự án")
-    st.markdown("**Tên đề tài:** Ứng dụng AI trong đánh giá tác động môi trường của việc sản xuất giấy từ lá cà phê")
-    st.markdown("**Nghiên cứu & Thực hiện:** Cô Tuyền")
-    st.markdown("**Đơn vị:** Trường THPT Võ Văn Kiệt, Đắk Lắk")
-    st.markdown("**Thiết kế & Lập trình AI:** Bảo Lâm")
-    
-    st.divider()
-    st.info("💡 Hệ thống sử dụng mô hình Học máy (Machine Learning) để phân tích và dự đoán các chỉ số môi trường dựa trên dữ liệu đầu vào.")
+    st.write("**Đề tài:** Sản xuất giấy từ lá cà phê")
+    st.write("**Thực hiện:** Cô Tuyền (THPT Võ Văn Kiệt)")
+    st.write("**Hỗ trợ AI:** Bảo Lâm")
 
 # --- 2. THIẾT KẾ GIAO DIỆN CHÍNH ---
 st.title("🌿 Ứng Dụng AI Đánh Giá Tác Động Môi Trường")
-st.write("Vui lòng kéo thanh trượt bên dưới để chọn khối lượng lá/bã cà phê, AI sẽ tự động tính toán các lợi ích môi trường mang lại.")
+st.write("Vui lòng nhập khối lượng lá/bã cà phê để AI tự động tính toán các lợi ích môi trường mang lại.")
 st.divider()
 
-# Thay thế ô nhập tay bằng Thanh trượt (Slider)
-la_ca_phe_input = st.slider(
-    "👉 Chọn khối lượng lá/bã cà phê tái chế (kg):", 
+# Sử dụng ô nhập số thay vì thanh kéo
+la_ca_phe_input = st.number_input(
+    "👉 Nhập khối lượng lá/bã cà phê tái chế (kg):", 
     min_value=1.0, 
-    max_value=200.0, 
     value=10.0, 
     step=1.0
 )
@@ -66,7 +60,6 @@ if st.button("🚀 Bắt đầu Dự đoán bằng AI", type="primary"):
     
     # --- 5. HIỂN THỊ BIỂU ĐỒ TRỰC QUAN ---
     st.write("### 📊 Biểu đồ hiệu quả môi trường")
-    st.write("So sánh tương quan giữa khối lượng vật liệu sử dụng và hiệu quả giảm phát thải.")
     
     # Dữ liệu cho biểu đồ
     chart_data = pd.DataFrame(
@@ -79,4 +72,4 @@ if st.button("🚀 Bắt đầu Dự đoán bằng AI", type="primary"):
     # Vẽ biểu đồ cột
     st.bar_chart(chart_data.set_index("Phân loại"))
     
-    st.caption("Lưu ý: Dữ liệu hiện tại là bản Demo mô phỏng. Thông số sẽ được cập nhật lại khi có kết quả thực nghiệm chính thức từ phòng thí nghiệm của trường THPT Võ Văn Kiệt.")
+    st.caption("Lưu ý: Dữ liệu hiện tại là bản Demo mô phỏng. Thông số sẽ được cập nhật lại khi có kết quả thực nghiệm chính thức.")
