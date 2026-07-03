@@ -16,10 +16,10 @@ models = load_model()
 
 # --- 1. TẠO THANH BÊN (SIDEBAR) ĐƠN GIẢN ---
 with st.sidebar:
-    st.header("📌 Thông tin dự án")
+    st.title("Trường THPT Võ Văn Kiệt")
+    st.header("Thông tin dự án")
     st.write("**Đề tài:** Sản xuất giấy từ lá cà phê")
-    st.write("**Thực hiện:** Cô Tuyền (THPT Võ Văn Kiệt)")
-    st.write("**Hỗ trợ AI:** Bảo Lâm")
+    st.write("**Thực hiện và hướng dẫn:** Cô Huỳnh Thị Bích Tuyền")
 
 # --- 2. THIẾT KẾ GIAO DIỆN CHÍNH ---
 st.title("🌿 Ứng Dụng AI Đánh Giá Tác Động Môi Trường")
@@ -79,3 +79,6 @@ if st.button("🚀 Bắt đầu Dự đoán bằng AI", type="primary"):
     st.altair_chart(chart, use_container_width=True)
     
     st.caption("Lưu ý: Dữ liệu hiện tại là bản Demo mô phỏng. Thông số sẽ được cập nhật lại khi có kết quả thực nghiệm chính thức.")
+
+[theme]
+base="light"
