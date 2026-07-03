@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import altair as alt
 import pickle
 
 # --- CẤU HÌNH TRANG WEB ---
@@ -68,8 +69,13 @@ if st.button("🚀 Bắt đầu Dự đoán bằng AI", type="primary"):
             "Phân loại": ["Lá cà phê đầu vào", "Rác hữu cơ giảm", "CO2 giảm phát thải"]
         }
     )
+    # Vẽ biểu đồ tùy chỉnh bằng Altair (Ép chữ nằm ngang)
+    chart = alt.Chart(chart_data).mark_bar(color='#2e7b32').encode(
+        x=alt.X('Phân loại', axis=alt.Axis(labelAngle=0)), # labelAngle=0 ép chữ xoay ngang
+        y='Khối lượng (kg)'
+    )
     
-    # Vẽ biểu đồ cột
-    st.bar_chart(chart_data.set_index("Phân loại"))
+    # Hiển thị biểu đồ ra web
+    st.altair_chart(chart, use_container_width=True)
     
     st.caption("Lưu ý: Dữ liệu hiện tại là bản Demo mô phỏng. Thông số sẽ được cập nhật lại khi có kết quả thực nghiệm chính thức.")
